@@ -47,7 +47,7 @@ const Login = () => {
             <img
               src={x.productimg}
               alt={x.productname}
-              className="rounded h-80 w-80 object-cover"
+              className="rounded h-50 md:h-80 w-80 object-cover"
             />
             <div className="p-4">
               <h1>{x.productname}</h1>

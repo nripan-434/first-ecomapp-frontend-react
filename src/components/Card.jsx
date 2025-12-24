@@ -37,12 +37,12 @@ const checkfav=(x)=>{
 
 
   return (
-    <div className=' shadow-2xl backdrop-blur-sm rounded-xl grid sm:grid-cols-2  md:grid-cols-4 p-4 gap-4 overflow-hidden'>
+    <div className=' shadow-2xl backdrop-blur-sm rounded-xl grid sm:grid-cols-2 place-items-center   md:grid-cols-3 lg:grid-cols-4  p-4 gap-4 overflow-hidden'>
           
           {
             products.map((x)=>{
               return( 
-              <div key={x.id} className='bg-gray-900 rounded-xl h-[340px] md:w-80 sm:w-70   hover:shadow-xl hover:scale-105 duration-200  ' >
+              <div key={x.id} className='bg-gray-900 rounded-xl h-[340px]     hover:shadow-xl hover:scale-105 duration-200  ' >
               
                <div className='relative '>
                 <img className='w-full h-40 object-cover rounded-xl hover: duration-200' src={x.productimg} alt="" />

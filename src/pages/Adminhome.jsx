@@ -40,9 +40,7 @@ const Adminhome = () => {
 
       </div>
 
-      <div className=' border-white bg-gradient-to-r from-blue-900 h-70 to-black  border-b-3 flex-3' >
-        dashboard
-      </div>
+      
       <h1 className='flex justify-center text-white font-bold mt-2'>Products</h1>
       <div className=' p-6  grid grid-cols-3 gap-3'>
         {

@@ -7,9 +7,10 @@ const Adminuserdata = () => {
   })
   return (
     
-    <div className='h-sreen to-black grid grid-cols-3 gap-4 text-white'>
+    <div className='h-screen to-black grid grid-cols-3 gap-4 text-white'>
    
-      {
+      <div>
+        {
         userdata.map(x=>{
                
           return <div className='scale-in-center m-5 border border-white p-3 rounded-xl' key={x.id}>
@@ -21,6 +22,7 @@ const Adminuserdata = () => {
         
         })
       }
+      </div>
       </div>
  
   )
