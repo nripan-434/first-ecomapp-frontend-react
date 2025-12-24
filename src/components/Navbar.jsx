@@ -13,9 +13,6 @@ const Navbar = () => {
 
   const { loginuser, logoutuser, scrolldowntar, targetref } = useContext(Authcontext)
   const [toggle, settoggle] = useState(false)
-  const togglemenu = () => {
-    settoggle(true)
-  }
   return (
     <div className={!loginuser ? 'flex justify-between p-3 bg-gradient-to-r from-red-900  border-white border-b-1 text-white bg-fit ' : 'flex justify-between items-center p-3 bg-gradient-to-r from-red-900 to-black  border-white border-b-1 text-white  '}>
       <div className=''>
@@ -43,9 +40,7 @@ const Navbar = () => {
         toggle && loginuser?
         <ImCross  onClick={()=>{settoggle(false)}} className='text-white' />:''
           }
-
           </div>
-
         {
           toggle && loginuser?
           <div className={`  absolute right-0 top-10 bg-gray-800 rounded-xl p-3 flex flex-col gap-4  z-5 ${toggle?'slide-in-right':'slide-out-right'}`}>
@@ -74,7 +69,7 @@ const Navbar = () => {
             loginuser ? <Link className='flex gap-1 items-center  hover:bg-white duration-200 rounded-xl hover:text-black p-1 ' to={'/userprofile'}>Profile <MdAccountBox className='text-[20px]' /></Link> : ''
           }
         </div>
-        <div className='   '>
+        <div className=''>
           {
             loginuser ?
               <button className='flex gap-1 items-center  justify-center cursor-pointer text-red-600 hover:text-white hover:bg-red-600 duration-300 rounded-xl  p-2' onClick={() => {
@@ -84,7 +79,7 @@ const Navbar = () => {
           }
         </div>
       </div>
-      :'aa'
+      :''
         }
         </div>
         {
