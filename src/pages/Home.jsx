@@ -101,7 +101,7 @@ const Home = () => {
             setSearch({ name: '' })}}
              className='text-black hover:text-red-600 duration-300' /></button>
           <div className='flex flex-col items-center justify-center bg-red-600  w-8 rounded-r-md  '>
-          <button type='submit' ><FaSearch className=' text-white    ' /></button>
+          <button type='submit' ><FaSearch className=' text-gray-300 hover:text-white duration-200   ' /></button>
 
           </div>
           

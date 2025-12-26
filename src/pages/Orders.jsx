@@ -17,13 +17,13 @@ const Orders = () => {
               x.items.map((e,i)=>{
                 return <table key={i} className=' border-separate border-spacing-2 w-full'>
                   <tbody>
-                  <tr className='   text-left'>
-                    <th className='border-b-1'>productimg</th>
-                    <th className='border-b-1'>productname</th>
-                    <th className='border-b-1'>productdetails</th>
+                  <tr className='   text-left border'>
+                    <th className='underline'>productimg</th>
+                    <th className='underline'>productname</th>
+                    <th className='underline'>productdetails</th>
                   </tr>
                   <tr className='border'>
-                    <td className='w-50'><img src={e.productimg} className=' rounded-xl h-30 object-cover w-70' alt="" /></td>
+                    <td className='w-50'><img src={e.productimg} alt='no image' className=' rounded-xl h-30 object-cover w-70'  /></td>
                     <td className='align-top w-60'><h1>{e.productname}</h1></td>
                     <td className='align-top'><h1>{e.productdetails}</h1></td>
                   </tr>
