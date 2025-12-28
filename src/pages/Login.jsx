@@ -25,7 +25,6 @@ const Login = () => {
     login(formdata);
   };
 
-  // Rive setup (responsive)
 
 
   return (
@@ -47,7 +46,7 @@ const Login = () => {
             <img
               src={x.productimg}
               alt={x.productname}
-              className="rounded h-50 md:h-80 w-80 object-cover"
+              className="rounded h-50  md:h-60 w-80 object-cover"
             />
             <div className="p-4">
               <h1>{x.productname}</h1>
@@ -55,7 +54,7 @@ const Login = () => {
                 for more details{' '}
                 <Link
                   onClick={() => scrolldowntar(targetref)}
-                  className="text-blue-400 border-b"
+                  className="text-blue-400 active:scale-95 border-b"
                 >
                   sign in
                 </Link>
@@ -69,11 +68,11 @@ const Login = () => {
        
         className="swing-in-top-fwd bg-color h-[370px] mt-[100px] mb-[90px] backdrop-blur-sm duration-200"
       >
-        <h1 className="bg-gradient-to-r from-blue-300 to-white bg-clip-text text-transparent mt-4 font-extrabold text-4xl ml-28">
+        <h1 className="bg-gradient-to-r from-blue-300 to-white bg-clip-text h-12 text-transparent mt-4 font-extrabold  text-4xl ">
           Sign In
         </h1>
 
-        <form  ref={targetref} onSubmit={submithandle} className="flex flex-col gap-6 mt-4">
+        <form  ref={targetref} onSubmit={submithandle} className="flex flex-col gap-6 mt-6">
           <input
             name="email"
             value={formdata.email}
@@ -92,7 +91,7 @@ const Login = () => {
             className="text-white outline-0 rounded-xl"
           />
 
-          <button className="text-white border rounded-xl mt-6 p-2 hover:bg-white hover:text-black duration-200">
+          <button className="text-white active:scale-95 active:shadow-2xl border rounded-xl mt-6 p-2 hover:bg-white hover:text-black hover:border-white duration-200">
             Login
           </button>
         </form>
@@ -100,7 +99,7 @@ const Login = () => {
         <div className="flex justify-center h-20 items-center">
           <p className="text-gray-300">
             can't sign in?{' '}
-            <Link to="/register" className="border-b text-white">
+            <Link to="/register" className="border-b active:scale-95 text-white">
               sign up
             </Link>
           </p>
