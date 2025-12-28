@@ -2,10 +2,14 @@ import React, { useContext, useEffect } from 'react'
 import { Authcontext } from '../contexts/Authcontext'
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
+import { Productcontext } from '../contexts/Productcontext';
 
 
 
-const Card = ({products,addproduct,addtofav,removefav,fav,qty,setQty}) => {
+const Card = ({products,qty,setQty}) => {
+  const {addproduct}=useContext(Productcontext)
+    const { addtofav, removefav, fav } = useContext(Productcontext)
+  
 
 
    const incrementqty=(id)=>{

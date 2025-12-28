@@ -11,9 +11,7 @@ import toast from 'react-hot-toast';
 
 
 const Home = () => {
-  const { addproduct } = useContext(Cartcontext)
-  
-  const {pdtsearch, products, addtofav, removefav, fav } = useContext(Productcontext)
+  const {pdtsearch, products } = useContext(Productcontext)
   const [hoveredIndex, setHoveredIndex] = useState(null)
   const categories = ['all categories', 'sports category', 'casual shoes']
   const [catstate, setCatstate] = useState('all categories')
@@ -112,7 +110,7 @@ const Home = () => {
         
         {
           prop==null?'':
-       <Card products={prop} addproduct={addproduct} addtofav={addtofav} removefav={removefav} fav={fav} qty={qty} setQty={setQty} />
+       <Card products={prop}   qty={qty} setQty={setQty} />
 
         }
         
@@ -121,16 +119,16 @@ const Home = () => {
       <div>
         {
           catstate == 'all categories' ? <>
-            <Card products={products} addproduct={addproduct} addtofav={addtofav} removefav={removefav} fav={fav} qty={qty} setQty={setQty} /></> : ''
+            <Card products={products}  qty={qty} setQty={setQty} /></> : ''
         }
         {
           catstate == 'sports category' ? <>
-            <Card products={sportscat} addproduct={addproduct} addtofav={addtofav} removefav={removefav} fav={fav} qty={qty} setQty={setQty} />
+            <Card products={sportscat}  qty={qty} setQty={setQty} />
           </> : ''
         }
         {
           catstate == 'casual shoes' ? <>
-            <Card products={casualcat} addproduct={addproduct} addtofav={addtofav} removefav={removefav} fav={fav} qty={qty} setQty={setQty} />
+            <Card products={casualcat}  qty={qty} setQty={setQty} />
           </> : ''
         }
       </div>
