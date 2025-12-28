@@ -19,6 +19,7 @@ import Favourites from './pages/Favourites'
 import Checkout from './pages/Checkout'
 import Adminprotected from './contexts/Adminprotected'
 import Userprofile from './pages/Userprofile'
+import Userprotected from './contexts/Userprotected'
 
 const App = () => {
  
@@ -32,7 +33,7 @@ const App = () => {
        
       <Navbar/>
       <Routes>
-    <Route path='/home' element={<Home/>}/>
+    <Route path='/home' element={<Userprotected><Home/></Userprotected>}/>
     <Route path='/' element={<Login/>}/>
     <Route path='/register' element={<Register/>}/>
     <Route path='/adminhome' element={<Adminprotected><Adminhome/></Adminprotected>}/>

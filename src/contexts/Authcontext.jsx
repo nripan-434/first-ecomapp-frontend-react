@@ -9,19 +9,25 @@ export const Authprovider = ({ children }) => {
 
     const [users, setusers] = useState(JSON.parse(localStorage.getItem('users')) || [])
 
-    const [loginuser, setloginuser] = useState(JSON.parse(localStorage.getItem('loginuser')) || null)
+    const [loginuser, setloginuser] = useState(JSON.parse(sessionStorage.getItem('loginuser')) || null)
     const navigate = useNavigate()
     useEffect(() => {
         localStorage.setItem('users', JSON.stringify(users));
     }, [users])
     useEffect(() => {
-        localStorage.setItem('loginuser', JSON.stringify(loginuser));
+        sessionStorage.setItem('loginuser', JSON.stringify(loginuser));
     }, [loginuser])
     
     const [toggle, settoggle] = useState(false)
     useEffect(() => {
         settoggle(false)
     }, [location.pathname])
+    useEffect(() => {
+        if (location.pathname === '/') {
+            setloginuser(null);
+            sessionStorage.removeItem('loginuser');
+        }
+    }, [location.pathname],[]);
 
     useEffect(() => {
         if (loginuser) {
@@ -102,9 +108,10 @@ export const Authprovider = ({ children }) => {
     }
     const logoutuser = () => {
         setloginuser(null)
-        localStorage.removeItem('loginuser')
+        sessionStorage.removeItem('loginuser')
         navigate('/')
     }
+    
     const targetref = useRef(null)
     const scrolldowntar = () => {
         targetref.current.scrollIntoView({
