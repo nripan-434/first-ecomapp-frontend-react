@@ -34,45 +34,53 @@ const Navbar = () => {
       </div>
      {/* mobileview */}
       <div className='relative md:hidden flex  justify-center items-center '>
-          <div className='flex  justify-center items-center w-15'>
+          <div className={'flex  justify-center transition-all duration-300 ease-in-out items-center w-15'}>
           {!toggle && loginuser?  
         <GiHamburgerMenu onClick={()=>{settoggle(true)}}  className='text-[30px]' />:
         toggle && loginuser?
-        <ImCross  onClick={()=>{settoggle(false)}} className='text-white' />:''
+        <ImCross  onClick={()=>{settoggle(false)}} className='text-white text-[25px] ' />:''
           }
           </div>
+           
+
+           
+
+
+
+
+
         {
-          toggle && loginuser?
-          <div className={`  absolute right-0 top-10 bg-gray-800 rounded-xl p-3 flex flex-col gap-4  z-5 ${toggle?'slide-in-right':'slide-out-right'}`}>
+           loginuser?
+          <div className={`  absolute right-0 top-10 bg-gray-800 rounded-xl overflow-hidden  flex flex-col  transtion-all duration-300 ease-in-out  z-5 ${toggle?'translate-x-0 opacity-100 pointer-events-auto':'translate-x-full opacity-0 pointer-events-none'}`}>
           <div className='flex justify-center items-center'>
           {
-            loginuser && loginuser.role == 'user' ? <Link className='flex gap-1 items-center  hover:bg-white duration-200 rounded-xl hover:text-black p-1 ' to={'/cart'}>Cart <FaShoppingCart className='' /></Link> : ' '
+            loginuser && loginuser.role == 'user' ? <Link className={`flex gap-1 items-center hover:bg-white  duration-200  hover:text-black p-1 ${!toggle?'rounded-xl':'w-full p-3'}`} to={'/cart'}>Cart <FaShoppingCart className='' /></Link> : ' '
           }
         </div>
         <div className='flex justify-center items-center'>
           {
-            loginuser && loginuser.role == 'user' ? <Link className='flex gap-1 items-center  hover:bg-white duration-200 rounded-xl hover:text-black p-1 ' to={'/orders'}>Orders <FaBoxesPacking /></Link> : ' '
+            loginuser && loginuser.role == 'user' ? <Link className={`flex gap-1 items-center hover:bg-white  duration-200  hover:text-black p-1 ${!toggle?'rounded-xl':'w-full p-3'}`} to={'/orders'}>Orders <FaBoxesPacking /></Link> : ' '
           }
         </div>
         <div className='flex justify-center items-center'>
           {
-            loginuser && loginuser.role == 'user' ? <Link className='flex gap-1 items-center  hover:bg-white duration-200 rounded-xl hover:text-black p-1 ' to={'/favouraties'}>Favours <LiaKissWinkHeartSolid className=' size-5' /></Link> : ' '
+            loginuser && loginuser.role == 'user' ? <Link className={`flex gap-1 items-center hover:bg-white  duration-200  hover:text-black p-1 ${!toggle?'rounded-xl':'w-full p-3'}`} to={'/favouraties'}>Favours <LiaKissWinkHeartSolid className=' size-5' /></Link> : ' '
           }
         </div>
         <div className='flex justify-center items-center'>
           {
-            loginuser && loginuser.role == 'admin' ? <Link to={'/addproducts'}>Addproducts</Link> : ''
+            loginuser && loginuser.role == 'admin' ? <Link to={'/addproducts'} className={`flex gap-1 items-center hover:bg-white  duration-200  hover:text-black p-1 ${!toggle?'rounded-xl':'w-full p-3'}`}>Addproducts</Link> : ''
           }
         </div>
         <div className='flex justify-center items-center'>
           {
-            loginuser ? <Link className='flex gap-1 items-center  hover:bg-white duration-200 rounded-xl hover:text-black p-1 ' to={'/userprofile'}>Profile <MdAccountBox className='text-[20px]' /></Link> : ''
+            loginuser ? <Link className={`flex gap-1 items-center hover:bg-white  duration-200  hover:text-black p-1 ${!toggle?'rounded-xl':'w-full p-3'}`} to={'/userprofile'}>Profile <MdAccountBox className='text-[20px]' /></Link> : ''
           }
         </div>
         <div className=''>
           {
             loginuser ?
-              <button className='flex gap-1 items-center  justify-center cursor-pointer text-red-600 hover:text-white hover:bg-red-600 duration-300 rounded-xl  p-2' onClick={() => {
+              <button className={`flex gap-1 items-center hover:bg-red-500  duration-200   p-1 ${!toggle?'rounded-xl':'w-full p-3'}`} onClick={() => {
                 logoutuser()
               }
               }>Logout <IoIosLogOut  className='text-[20px]'/></button> :''
