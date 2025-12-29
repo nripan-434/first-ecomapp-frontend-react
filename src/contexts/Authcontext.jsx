@@ -2,13 +2,11 @@ import { createContext, useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
+import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 export const Authcontext = createContext()
-
 export const Authprovider = ({ children }) => {
-
     const [users, setusers] = useState(JSON.parse(localStorage.getItem('users')) || [])
-
     const [loginuser, setloginuser] = useState(JSON.parse(sessionStorage.getItem('loginuser')) || null)
     const navigate = useNavigate()
     useEffect(() => {
@@ -17,7 +15,7 @@ export const Authprovider = ({ children }) => {
     useEffect(() => {
         sessionStorage.setItem('loginuser', JSON.stringify(loginuser));
     }, [loginuser])
-    
+
     const [toggle, settoggle] = useState(false)
     useEffect(() => {
         settoggle(false)
@@ -27,7 +25,7 @@ export const Authprovider = ({ children }) => {
             setloginuser(null);
             sessionStorage.removeItem('loginuser');
         }
-    }, [location.pathname],[]);
+    }, [location.pathname], []);
 
     useEffect(() => {
         if (loginuser) {
@@ -36,7 +34,6 @@ export const Authprovider = ({ children }) => {
             })
             console.log(p)
             setloginuser(p)
-
         }
     }, [users])
     const regusers = (users) => {
@@ -54,7 +51,6 @@ export const Authprovider = ({ children }) => {
         const updatedusers = users.map(x => {
             if (loginuser.id == x.id) {
                 return { ...x, name, email, password, image }
-
             }
             else {
                 return x
@@ -76,7 +72,6 @@ export const Authprovider = ({ children }) => {
         if (!checkuser) {
             return toast.error('invalid credentials')
         }
-
         else if (checkuser.password != password) {
             return toast.error("invalid credentials")
         }
@@ -89,29 +84,34 @@ export const Authprovider = ({ children }) => {
             setloginuser({ ...checkuser, role: 'admin' })
             navigate('/adminhome')
         }
-
-
     }
-    const deleteuser = (user) => {
-        const rmvuser = users.find(x => {
-
-            return x == user
+    const deleteuser = async (user) => {
+        const confirm = await Swal.fire({
+            text: "Do you want to remove this user from Zhoe.in?",
+            showCancelButton: true,
+            showConfirmButton: true,
+            padding: "0.2rem",
+            cancelButtonColor: 'red',
+            width: '300px',
+            position: 'top',
         })
-        const newusers = users.filter(e => {
+        if (confirm.isConfirmed) {
 
-
-            return rmvuser !== e
-        })
-        console.log(newusers)
-        setusers(newusers)
-
+            const rmvuser = users.find(x => {
+                return x == user
+            })
+            const newusers = users.filter(e => {
+                return rmvuser !== e
+            })
+            console.log(newusers)
+            setusers(newusers)
+        }
     }
     const logoutuser = () => {
         setloginuser(null)
         sessionStorage.removeItem('loginuser')
         navigate('/')
     }
-    
     const targetref = useRef(null)
     const scrolldowntar = () => {
         targetref.current.scrollIntoView({

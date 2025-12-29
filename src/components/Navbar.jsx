@@ -9,6 +9,7 @@ import { MdAccountBox } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaBoxesPacking } from "react-icons/fa6";
 import { MdDomainAdd } from "react-icons/md";
+import { IoHome } from "react-icons/io5";
 
 const Navbar = () => {
 
@@ -28,7 +29,7 @@ const Navbar = () => {
         </div>
         <div>
           {
-            loginuser && loginuser.role == 'admin' ? <Link className='flex justify-center hover:scale-103 duration-300 items-center w-30 border-t-2 border-b-2' to={'/home'} ><h1 className='text-gray-400 font-[impact]   text-[38px]'>Z</h1 ><h2 className='font-[impact] text-2xl text-amber-300'>hoe.in</h2></Link> : ''
+            loginuser && loginuser.role == 'admin' ? <Link className='flex justify-center hover:scale-103 duration-300 items-center w-30 border-t-2 border-b-2' to={'/adminhome'} ><h1 className='text-gray-400 font-[impact]   text-[38px]'>Z</h1 ><h2 className='font-[impact] text-2xl text-amber-300'>hoe.in</h2></Link> : ''
           }
         </div>
       </div>
@@ -52,6 +53,16 @@ const Navbar = () => {
         {
            loginuser?
           <div className={`  absolute right-0 top-10 bg-gray-800 rounded-xl overflow-hidden  flex flex-col  transtion-all duration-300 ease-in-out  z-5 ${toggle?'translate-x-0 opacity-100 pointer-events-auto':'translate-x-full opacity-0 pointer-events-none'}`}>
+            <div className='flex justify-center items-center'>
+          {
+            loginuser && loginuser.role == 'user' ? <Link className={`flex gap-1 items-center hover:bg-white  duration-200  hover:text-black p-1 ${!toggle?'rounded-xl':'w-full p-3'}`} to={'/home'}><IoHome />Home </Link> : ' '
+          }
+        </div>
+        <div className='flex justify-center items-center'>
+          {
+            loginuser && loginuser.role == 'admin' ? <Link className={`flex gap-1 items-center hover:bg-white  duration-200  hover:text-black p-1 ${!toggle?'rounded-xl':'w-full p-3'}`} to={'/adminhome'}><IoHome />Home </Link> : ' '
+          }
+        </div>
           <div className='flex justify-center items-center'>
           {
             loginuser && loginuser.role == 'user' ? <Link className={`flex gap-1 items-center hover:bg-white  duration-200  hover:text-black p-1 ${!toggle?'rounded-xl':'w-full p-3'}`} to={'/cart'}><FaShoppingCart  />Cart </Link> : ' '
