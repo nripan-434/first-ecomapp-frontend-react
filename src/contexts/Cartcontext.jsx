@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { Productcontext } from "./Productcontext";
+import Swal from "sweetalert2";
 export const Cartcontext=createContext()
 
 export const Cartprovider=({children})=>{
@@ -40,13 +41,24 @@ export const Cartprovider=({children})=>{
             return toast.success("product added to cart")
 
     }
-    const removeproduct=(id)=>{
+    const removeproduct=async(id)=>{
+        const confirm =await  Swal.fire({
+        text:"Do you want to remove this item from cart ?",
+        showCancelButton:true,
+        showConfirmButton:true,
+        padding: "0.2rem" ,
+        cancelButtonColor:'red',
+        width:'300px',
+        position:'top',
+      })
+      if (confirm.isConfirmed){
+
             const newcart=cart.filter((x)=>{
                 return x.id != id
             })
             setCart(newcart)
             return toast.error("product removed")
-    }
+    }}
     
    
    const clearcart=()=>{

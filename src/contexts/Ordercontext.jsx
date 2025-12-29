@@ -13,7 +13,7 @@ export const Orderprovider = ({ children }) => {
         localStorage.setItem('orders', JSON.stringify(orders))
     }, [orders])
     const addtoorders = ({ cart, total }) => {
-
+            
         setOrders((prev) => [...prev, { items: [...cart], totalamt: total }])
         toast.success('order placed')
         navigate('/home')
@@ -28,10 +28,6 @@ export const Orderprovider = ({ children }) => {
         cancelButtonColor:'red',
         width:'300px',
         position:'top',
-    
-        
-        
-
       })
       if (confirm.isConfirmed){
        const neworder = orders.filter(x=>{
@@ -40,9 +36,7 @@ export const Orderprovider = ({ children }) => {
         setOrders(neworder)
         return toast.success("order cancelled")
     }
-    else{
-        return toast.error('operation failed')
-    }
+    
 
     }
 

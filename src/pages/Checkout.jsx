@@ -14,7 +14,6 @@ const Checkout = () => {
     country: '',
   });
 
-  const [orderStatus, setOrderStatus] = useState('Processing');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,18 +22,12 @@ const Checkout = () => {
 
   const handlePlaceOrder = (e) => {
     e.preventDefault();
-
-    // didnt create a function for to add the checkout data
-
-
-    if (!shipping.name || !shipping.email || !shipping.address) {
-      alert('Please fill all required fields.');
-      return;
+    if(!shipping.name || !shipping.email || !shipping.address || !shipping.city|| !shipping.postalCode|| !shipping.country){
+      return alert('Please fill in all required fields.');
     }
-
-    setOrderStatus('Shipped');
-    setTimeout(() => setOrderStatus('Delivered'), 3000);
-
+    addtoorders({ cart, total })
+              clearcart()
+    // didnt create a function for to add the checkout data
     setShipping({
       name: '',
       email: '',
@@ -71,8 +64,7 @@ const Checkout = () => {
             className="border p-2 rounded w-full"
             required
           />
-          <input
-            type="text"
+          <input type="text"
             name="address"
             placeholder="Address"
             value={shipping.address}
@@ -105,20 +97,13 @@ const Checkout = () => {
             className="border p-2 rounded w-full" 
             />
           <button
-            onClick={() => {
-              addtoorders({ cart, total })
-              clearcart()
-
-            }}
             type="submit"
             className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition"
           >
             Place Order
           </button>
         </form>
-        {orderStatus !== 'Processing' && (
-          <p className="mt-4 font-semibold text-gray-700">Order Status: {orderStatus}</p>
-        )}
+       
       </div>
     </div>
   );
